@@ -25,17 +25,17 @@
                 "location": [
                     {
                         "coordinates": {
-                            "latitude": 43.53722,
-                            "longitude": -5.66759
+                            "latitude": 43.53728,
+                            "longitude": -5.66758
                         },
-                        "postal": "33207"
+                        "postal": "33208"
                     }
                 ],
 		"operationalStatus": [
 					"UP"
 				],
 		"mainPath": [
-                    "/SNDFG00000000"
+                    "/SNDFG00000008"
                 ]
             }
     }

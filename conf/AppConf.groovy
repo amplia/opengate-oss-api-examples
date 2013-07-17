@@ -11,5 +11,6 @@ api {
 	ip = "192.168.1.22"
 	port = "25281"
 	url = "http://${ip}:${port}/"
-	key = "ad7bfb70-69df-45de-bcb9-36e1e35fb629"
+	//key = "ad7bfb70-69df-45de-bcb9-36e1e35fb629"
+	key = "decb91d3-775a-2b65-e040-0f0ab8690a5f" //UUID amplia)))
 }

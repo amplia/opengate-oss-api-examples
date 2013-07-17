@@ -1,8 +1,4 @@
 package entity
-import net.sf.json.JSON
-import groovy.json.JsonBuilder
-import groovyx.net.http.HTTPBuilder
-
 
 class Device extends Crud{
 
@@ -13,5 +9,11 @@ class Device extends Crud{
 	static main(args){
 		def device = new Device()
 		device.create()
+		device.read()
+		device.update()
+		device.read()
+		device.delete()
+		device.read()
+		
 	}
 }

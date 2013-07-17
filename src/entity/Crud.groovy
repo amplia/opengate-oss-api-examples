@@ -31,8 +31,8 @@ class Crud {
 
 			response.success = { resp ->
 				println resp.statusLine
-				println 'Headers: -----------'
 				def splitter = "${entityName}s/"
+				println resp.headers.Location
 				def id = resp.headers.Location.split(splitter)[1]
 				new File("id").write(id)
 				return true
@@ -40,7 +40,6 @@ class Crud {
 
 			response.failure = { resp->
 				println resp.statusLine
-				println resp.data
 				return false
 			}
 		}
@@ -52,18 +51,20 @@ class Crud {
 			id = new File("id").text
 		}
 
+		println "Reading:${id}"
+		
 		http.request( GET )  {
-			uri.path           = "${entityName}s/${id}"
-			body               = entity
+			uri.path           = "provision/${entityName}s/${id}"
+			headers.'X-ApiKey' = key
 
-			response.success = { resp ->
+			response.success = { resp, json ->
 				println resp.statusLine
+				println new JsonBuilder(json)
 				return true
 			}
 
-			response.failure = { resp, json ->
+			response.failure = { resp ->
 				println resp.statusLine
-				println new JsonBuilder(json)
 				return false
 			}
 		}
@@ -75,11 +76,12 @@ class Crud {
 			id = new File("id").text
 		}
 
-		def entity = new File("conf/${entityName}.json").text
+		def entity = new File("conf/update_${entityName}.json").text
 
 		http.request( PUT, JSON )  {
-			uri.path           = "${entityName}s/${id}"
+			uri.path           = "provision/${entityName}s/${id}"
 			body               = entity
+			headers.'X-ApiKey' = key
 			requestContentType = JSON
 
 			response.success = { resp ->
@@ -87,9 +89,8 @@ class Crud {
 				return true
 			}
 
-			response.failure = { resp, json ->
+			response.failure = { resp ->
 				println resp.statusLine
-				println new JsonBuilder(json)
 				return false
 			}
 		}
@@ -102,17 +103,16 @@ class Crud {
 		}
 
 		http.request( DELETE )  {
-			uri.path           = "${entityName}s/${id}"
-			body               = entity
+			uri.path           = "provision/${entityName}s/${id}"
+			headers.'X-ApiKey' = key
 
 			response.success = { resp ->
 				println resp.statusLine
 				return true
 			}
 
-			response.failure = { resp, json ->
+			response.failure = { resp ->
 				println resp.statusLine
-				println new JsonBuilder(json)
 				return false
 			}
 		}

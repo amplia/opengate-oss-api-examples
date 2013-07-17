@@ -1,9 +1,18 @@
 package entity
-import Crud;
 
+class Subscription extends Crud{
 
-class Subscription extends Crud {
-	Subscription (){
-		entityName= ""
+	Subscription(){
+		entityName= "subscription"
+	}
+
+	static main(args){
+		def subscription = new Subscription()
+		subscription.create()
+		subscription.read()
+		subscription.update()
+		subscription.read()
+		subscription.delete()
+		subscription.read()
 	}
 }

@@ -1,0 +1,52 @@
+{
+    "subscription": {
+		"provision": {
+			"customId": [
+				"214179100000222"
+			],
+			"template": "default",
+			"specificType": [
+				"MOBILE"
+			],
+			"name": [
+				"MOBILE_222"
+			],
+			"description": [
+				"MOBILE 000 description"
+			],
+			"admin": {
+				"organization": "endesa_organization",
+				"channel": "TELECONTROL",
+				"administrativeState": "ACTIVE",
+				"serviceGroup": "GPRS_TELECONTROL"
+			},
+			"imsi": [
+				"214179100000222"
+			],
+			"ipAddress": [
+				"172.30.2.2"
+			],
+			"apn": [
+				"movistar.es"
+			],
+			"msisdn": [
+				"34100000222"
+			],
+            		"registeredOperator": [
+                		"Vodafone España, SAU"
+            		],
+			"homeOperator": [
+				"Vodafone España, SAU"
+			],
+			"location": [
+				{
+					"coordinates": {
+						"latitude": 60.42222,
+						"longitude": -13.72222
+					},
+					"postal": "28022"
+				}
+			]
+		}
+    }
+}

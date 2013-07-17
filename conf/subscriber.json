@@ -1,0 +1,28 @@
+{
+    "subscriber": {
+        "provision": {
+            "customId": [
+                "8934070139100000222"
+            ],
+            "template": "default",
+            "specificType": [
+                "SIM"
+            ],
+            "name": [
+                "SIM_222"
+            ],
+            "description": [
+                "SIM 00 description"
+            ],
+	    "admin": {
+	        "organization": "endesa_organization",
+    	        "channel": "TELECONTROL",
+	        "administrativeState": "ACTIVE",
+	        "serviceGroup": "GPRS_TELECONTROL"
+	    },
+            "icc": [
+                "8934070139100000222"
+            ]
+        }
+    }
+}

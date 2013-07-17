@@ -1,0 +1,35 @@
+{
+   "commModule":{
+      "provision":{
+         "customId":[
+            "352239100000221"
+         ],
+         "template":"default",
+         "specificType":[
+            "GSM"
+         ],
+         "name":[
+            "GSM_221"
+         ],
+         "description":[
+            "GSM 221 description"
+         ],
+         "admin": {
+              "organization": "endesa_organization",
+              "channel": "TELECONTROL",
+              "administrativeState": "ACTIVE",
+              "serviceGroup": "GPRS_TELECONTROL"
+         },
+         "imei":[
+            "352239100000221"
+         ],
+         "hardware": [
+                    "407ac4fd-dbd6-41fe-b4d3-0cd800e27274"
+                ],
+                "software": [
+                    "1c30bc1a-4dfd-4d33-9d06-66b78ce1484e",
+                    "385fa018-b958-467d-8367-784eed5ba22f"
+                ]
+      }
+   }
+}
