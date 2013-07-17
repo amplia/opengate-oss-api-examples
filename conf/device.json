@@ -1,0 +1,43 @@
+{
+    "device": {
+            "provision": {
+                "customId": [
+                    "SNDFG00000000"
+                ],
+                "template": "default",
+                "specificType": [ "CONCENTRATOR" ],
+                "name": [
+                    "CONCENTRATOR_TEST_DFG"
+                ],
+                "description": [
+                    "DFG device description"
+                ],
+                "admin": {
+                    "organization": "base_organization",
+                    "channel": "base_channel",
+                    "administrativeState": "ACTIVE",
+                    "serviceGroup": "baseServiceGroup"
+                },
+                "type": "gateway",
+                "serialNumber": [ "SNDFG00000000" ],
+                "hardware": [ "8c21ec16-4751-4cc6-be5e-ca94883ffeea" ],
+                "software": [ "3fa4e8d1-9e20-41af-972e-95d30b333001", "e92a3d04-4a1d-4d43-9281-a0b9dee3596e" ],
+                "location": [
+                    {
+                        "coordinates": {
+                            "latitude": 43.53722,
+                            "longitude": -5.66759
+                        },
+                        "postal": "33207"
+                    }
+                ],
+		"operationalStatus": [
+					"UP"
+				],
+		"mainPath": [
+                    "/SNDFG00000000"
+                ]
+            }
+    }
+    
+}
