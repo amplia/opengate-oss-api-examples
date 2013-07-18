@@ -23,13 +23,13 @@
          "imei":[
             "352239100000221"
          ],
-         "hardware": [
-                    "407ac4fd-dbd6-41fe-b4d3-0cd800e27274"
-                ],
-                "software": [
-                    "1c30bc1a-4dfd-4d33-9d06-66b78ce1484e",
-                    "385fa018-b958-467d-8367-784eed5ba22f"
-                ]
+        "hardware": [
+            "${hardwareUuid}"
+        ],
+        "software": [
+            "${softwareUuid}",
+            "${firmwareUuid}"
+        ]
       }
    }
 }

@@ -18,10 +18,15 @@
                     "administrativeState": "ACTIVE",
                     "serviceGroup": "GPRS_TELECONTROL"
                 },
-                "type": "gateway",
+                "type": "asset",
                 "serialNumber": [ "SNDFG00000000" ],
-                "hardware": [ "c5d8c589-9f49-4989-a271-d60aa3f15d3b" ],
-                "software": [ "d93907d1-bba1-4f1f-9414-2c4007a6ae4a", "dac59a98-83fd-434e-be3e-69e942a07387" ],
+                "hardware": [
+                    "${hardwareUuid}"
+                ],
+                "software": [
+                    "${softwareUuid}",
+                    "${firmwareUuid}"
+                ],
                 "location": [
                     {
                         "coordinates": {

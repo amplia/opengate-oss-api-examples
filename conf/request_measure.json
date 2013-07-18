@@ -1,0 +1,10 @@
+    {
+     "operations" :
+     {
+        "target" : [ "${uuid}" ],
+        "name" : "REQUEST_MEASURE",
+        "notify" : true,
+        "globalTimeout" : 20,
+        "date" : 1373017266
+      }
+    }

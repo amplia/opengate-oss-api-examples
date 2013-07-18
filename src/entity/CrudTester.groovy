@@ -4,34 +4,55 @@ import static groovyx.net.http.ContentType.*
 import static groovyx.net.http.Method.*
 import groovy.json.*
 import groovyx.net.http.*
+import groovy.text.GStringTemplateEngine
 
-class Crud {
+class CrudTester {
 
-	def url
 	def key
-	def entityName
+	def fileName
 	def http
+	def url
+	def urlPrefix
+	def bindings
 
-	Crud(){
-		def config = new ConfigSlurper().parse(new File("conf/AppConf.groovy").toURL())
-		url = config.api.url
-		key = config.api.key
-		http = new HTTPBuilder( url )
+	CrudTester(String url, String filePrefix){
+		this.url=url
+		this.fileName = filePrefix
+		configuration()
 	}
+	
+	CrudTester(ServiceUrl serviceUrl, EntityType entityType){
+		this.url = serviceUrl.toString() + "/"+ entityType.toString() + "s"
+		this.fileName = entityType.toString()
+		configuration()
+	}
+	
+	private configuration(){
+		def config = new ConfigSlurper("neoris").parse(new File("conf/AppConf.groovy").toURL())
+		bindings = config.uuids
+		urlPrefix = config.api.url
+		key = config.api.key
+		http = new HTTPBuilder( urlPrefix )
+	}
+	
+	public Object create(_binding) {
 
-	public Object create() {
-
-		def entity = new File("conf/${entityName}.json").text
+		def template = new File("conf/${fileName}.json").text
+		
+		//Replace template values
+		def engine = new GStringTemplateEngine()
+		if(_binding) bindings << _binding
+		def entity = engine.createTemplate(template).make(bindings).toString()
 
 		http.request( POST, JSON )  {
-			uri.path           = "provision/${entityName}s"
+			uri.path           = "${url}"
 			headers.'X-ApiKey' = key
 			body               = entity
 			requestContentType = JSON
 
 			response.success = { resp ->
 				println resp.statusLine
-				def splitter = "${entityName}s/"
+				def splitter = "${url}/"
 				println resp.headers.Location
 				def id = resp.headers.Location.split(splitter)[1]
 				new File("id").write(id)
@@ -40,6 +61,7 @@ class Crud {
 
 			response.failure = { resp->
 				println resp.statusLine
+				resp.headers.each { h -> println " ${h.name} : ${h.value}" }
 				return false
 			}
 		}
@@ -52,15 +74,15 @@ class Crud {
 		}
 
 		println "Reading:${id}"
-		
+
 		http.request( GET )  {
-			uri.path           = "provision/${entityName}s/${id}"
+			uri.path           = "${url}/${id}"
 			headers.'X-ApiKey' = key
 
 			response.success = { resp, json ->
 				println resp.statusLine
-				println new JsonBuilder(json)
-				return true
+				//println new JsonBuilder(json).toPrettyString()
+				return json
 			}
 
 			response.failure = { resp ->
@@ -76,10 +98,14 @@ class Crud {
 			id = new File("id").text
 		}
 
-		def entity = new File("conf/update_${entityName}.json").text
+		def template = new File("conf/update_${fileName}.json").text
+		
+		//Replace template values
+		def engine = new GStringTemplateEngine()
+		def entity = engine.createTemplate(template).make(bindings).toString()
 
 		http.request( PUT, JSON )  {
-			uri.path           = "provision/${entityName}s/${id}"
+			uri.path           = "${url}/${id}"
 			body               = entity
 			headers.'X-ApiKey' = key
 			requestContentType = JSON
@@ -103,7 +129,7 @@ class Crud {
 		}
 
 		http.request( DELETE )  {
-			uri.path           = "provision/${entityName}s/${id}"
+			uri.path           = "${url}/${id}"
 			headers.'X-ApiKey' = key
 
 			response.success = { resp ->
@@ -117,4 +143,5 @@ class Crud {
 			}
 		}
 	}
+	
 }
