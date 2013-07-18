@@ -9,11 +9,11 @@ class CommModule extends Crud{
 	static main(args){
 		def commModule = new CommModule()
 		commModule.create()
-/*		commModule.read()
+		commModule.read()
 		commModule.update()
 		commModule.read()
 		commModule.delete()
-		commModule.read()*/
+		commModule.read()
 	}
 }
 
