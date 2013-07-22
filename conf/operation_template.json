@@ -1,0 +1,10 @@
+    {
+     "operations" :
+     {
+        "target" : [ "${uuid}" ],
+        "name" : "${operationType}",
+        "notify" : true,
+        "globalTimeout" : 20,
+        "date" : 1373017266
+      }
+    }
